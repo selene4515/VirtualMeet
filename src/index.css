@@ -138,6 +138,7 @@ button {
   background: none;
   cursor: pointer;
   white-space: nowrap;
+  color: #ffffff;
 }
 a,
 a:visited {
