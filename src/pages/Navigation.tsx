@@ -41,7 +41,7 @@ const Navi = styled.header`
   ${media.tablet`width: 768px;`}; */
 `;
 const Nav = styled.div`
-  width: 64rem;
+  width: 1024px;
   height: 100%;
   display: flex;
   justify-content: space-between;
