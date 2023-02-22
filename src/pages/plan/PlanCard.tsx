@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PlanTextLine from "./PlanTextLine";
 
@@ -40,7 +41,9 @@ const PlanCard = ({
         </PlanExplainComponentDiv>
       </PlanExplainComponent>
       <PlanBuyComponent>
-        <PlanBuyBtn color={color}>Buy Now</PlanBuyBtn>
+        <Link to="/plan/payment">
+          <PlanBuyBtn color={color}>Buy Now</PlanBuyBtn>
+        </Link>
       </PlanBuyComponent>
     </PalnCardComponent>
   );
