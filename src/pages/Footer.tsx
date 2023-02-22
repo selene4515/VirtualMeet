@@ -1,29 +1,85 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Main } from "./home/Home";
 
 const Footer = () => {
   return (
     <>
       <Main>
-        <Container>footer</Container>
+        <Container>
+          <img
+            src={require("../assets/footer/footerLogo.svg").default}
+            alt="fluentt"
+          />
+          <TextArea>
+            <p>사업자 등록번호 : 5168802097 | 대표자 : 전예찬 (Jeon ye chan)</p>
+            <p>
+              서울특별시 강남구 역삼로 217 합동빌딩, 6층 | 전화번호 :
+              010-6602-1795 | 메일 : fluentt88@fluentt.ai
+            </p>
+            <p>
+              <Link to="/">Terms of Service</Link> |
+              <Link to="/"> Privacy Policy</Link>
+            </p>
+          </TextArea>
+          <SNSIcon>
+            <img
+              src={require("../assets/footer/snsInsta.svg").default}
+              alt="instagram"
+            />
+            <img
+              src={require("../assets/footer/snsLinkedin.svg").default}
+              alt="linkedin"
+            />
+            <img
+              src={require("../assets/footer/snsYoutube.svg").default}
+              alt="youtube"
+            />
+          </SNSIcon>
+          <Copyright>Copyright 2023 FluentT Inc.</Copyright>
+        </Container>
       </Main>
     </>
   );
 };
 
-const Main = styled.div`
-  background: ${(props) => props.color || "#000000"};
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const Container = styled.div`
-  border: 1px solid red;
   width: 1024px;
   height: 100%;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  padding: 6.0625rem 0;
+  padding-left: 1.875rem;
+`;
+
+const TextArea = styled.p`
+  margin: 1.5rem 0;
+  p {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 150%;
+
+    a {
+      text-decoration-line: underline;
+      color: #ffffff;
+    }
+  }
+`;
+const SNSIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  img {
+    margin-right: 1.25rem;
+  }
+`;
+const Copyright = styled.p`
+  margin-top: 1.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 150%;
 `;
 
 export default Footer;
