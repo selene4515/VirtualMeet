@@ -3,9 +3,10 @@ import styled from "styled-components";
 type PropsType = {
   title: string;
   text?: string;
+  children?: React.ReactNode;
 };
 
-const PaymentCard = ({ title, text }: PropsType) => {
+const PaymentCardTitle = ({ title, text }: PropsType) => {
   return (
     <PaymentCardDiv>
       <p>{title}</p>
@@ -16,7 +17,6 @@ const PaymentCard = ({ title, text }: PropsType) => {
 };
 
 const PaymentCardDiv = styled.div`
-  margin-bottom: 4.375rem;
   width: 100%;
 
   p {
@@ -37,4 +37,4 @@ const PaymentCardDiv = styled.div`
   }
 `;
 
-export default PaymentCard;
+export default PaymentCardTitle;
