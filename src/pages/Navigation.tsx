@@ -9,13 +9,16 @@ const Navigation = () => {
         <NavLeft>
           <Link to="/">
             <img
-              src={require("../assets/logo/T_productLogo.svg").default}
+              src={require("../assets/logo/productLogo.svg").default}
               alt="vmlogo"
             />
           </Link>
         </NavLeft>
         <NavCenter>
-          <NavCenterLan>KOR | ENG</NavCenterLan>
+          <NavCenterLan>
+            <NavCenterLanThin>KOR</NavCenterLanThin> |
+            <NavCenterLanBold>ENG</NavCenterLanBold>
+          </NavCenterLan>
         </NavCenter>
         <NavRight>
           <Link to="/">
@@ -59,8 +62,17 @@ const NavCenter = styled.div`
   padding: 0 1.25rem;
 `;
 const NavCenterLan = styled.div`
-  border: 1px solid yellow;
   color: #cfd8e3;
+`;
+const NavCenterLanBold = styled.button`
+  font-weight: 600;
+  line-height: 1rem;
+  margin: 0 0.625rem;
+`;
+const NavCenterLanThin = styled.button`
+  font-weight: 300;
+  line-height: 1rem;
+  margin: 0 0.625rem;
 `;
 
 const NavRight = styled.div`
