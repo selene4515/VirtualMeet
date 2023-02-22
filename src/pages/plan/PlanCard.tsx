@@ -5,7 +5,7 @@ interface CardPropsType {
   color: string;
   planTitle: string;
   planSubTitle?: string;
-  price: number;
+  price: string;
   currency: string;
   text1?: string;
   text2?: string;

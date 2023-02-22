@@ -12,7 +12,7 @@ const Plan = () => {
             color="#7FFF6A"
             planTitle="Basic"
             planSubTitle="Best Value"
-            price={12900}
+            price="12,900"
             currency="원"
             text1="Meetings up to 30 minutes per meeting"
             text2="Real-time communication"
