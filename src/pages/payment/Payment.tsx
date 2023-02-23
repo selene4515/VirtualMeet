@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Container, Main } from "../home/Home";
 import PaymentCardTitle from "./PaymentCardTitle";
@@ -12,9 +12,34 @@ import accountImg from "../../assets/payment/account.svg";
 import virAccountImg from "../../assets/payment/virtualAccount.svg";
 import checkAgree from "../../assets/icon/checkRound_green.svg";
 import checkDeagree from "../../assets/icon/checkRound_gray.svg";
-import { Link } from "react-router-dom";
+
+import { loadTossPayments } from "@tosspayments/payment-sdk";
 
 const Payment = () => {
+  const clientKey = "test_ck_4Gv6LjeKD8awkyBPDbxVwYxAdXy1";
+
+  const paymentsHandler = (event: React.MouseEvent<HTMLElement>) => {
+    loadTossPayments(clientKey).then((tossPayments) => {
+      tossPayments
+        .requestPayment(method, {
+          amount: 12900,
+          orderId: "EyOBs4TDDykw7-5ccEi6W", //자동생성필요
+          orderName: "Basic",
+          customerEmail: "123@gmail.com",
+          successUrl: "http://localhost:3000/plan/payment/success",
+          failUrl: "http://localhost:3000/plan/payment/fail",
+        })
+        .catch(function (error: any) {
+          if (error.code === "USER_CANCEL") {
+            console.log("결제 고객이 결제창을 닫았을 때 에러 처리");
+          } else if (error.code === "INVALID_CARD_COMPANY") {
+            console.log("유효하지 않은 카드 코드에 대한 에러 처리");
+          }
+        });
+    });
+  };
+
+  const [method, setMethod] = useState<any>("카드");
   const [selectedCredit, setselectedCredit] = useState(true);
   const [selectedAccount, setselectedAccount] = useState(false);
   const [selectedVirtual, setselectedVirtual] = useState(false);
@@ -23,6 +48,7 @@ const Payment = () => {
     if (selectedCredit === true) {
       setselectedCredit(false);
     } else {
+      setMethod("카드");
       setselectedCredit(true);
       setselectedAccount(false);
       setselectedVirtual(false);
@@ -32,6 +58,7 @@ const Payment = () => {
     if (selectedAccount === true) {
       setselectedAccount(false);
     } else {
+      setMethod("계좌이체");
       setselectedCredit(false);
       setselectedAccount(true);
       setselectedVirtual(false);
@@ -41,6 +68,7 @@ const Payment = () => {
     if (selectedVirtual === true) {
       setselectedVirtual(false);
     } else {
+      setMethod("가상계좌");
       setselectedCredit(false);
       setselectedAccount(false);
       setselectedVirtual(true);
@@ -141,7 +169,11 @@ const Payment = () => {
             <button className="backBtn" onClick={onCancel}>
               Back
             </button>
-            <button className="buyBtn" disabled={!allSelected}>
+            <button
+              className="buyBtn"
+              onClick={paymentsHandler}
+              disabled={!allSelected}
+            >
               BUY
             </button>
           </BtnDiv>

@@ -5,6 +5,8 @@ import Home from "./pages/home/Home";
 import Footer from "./pages/Footer";
 import Plan from "./pages/plan/Plan";
 import Payment from "./pages/payment/Payment";
+import PaymentSuccess from "./pages/payment/PaymentSuccess";
+import PaymentFail from "./pages/payment/PaymenetFail";
 
 function App() {
   return (
@@ -14,8 +16,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/login" element={<Login />} /> */}
+
           <Route path="/plan" element={<Plan />} />
           <Route path="/plan/payment" element={<Payment />} />
+          <Route path="/plan/payment/success" element={<PaymentSuccess />} />
+          <Route path="/plan/payment/fail" element={<PaymentFail />} />
         </Routes>
         <Footer />
       </BrowserRouter>
