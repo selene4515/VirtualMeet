@@ -1,12 +1,18 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Container, Main } from "../home/Home";
 import PaymentCardTitle from "./PaymentCardTitle";
 import PaymentMethodCard from "./PaymentMethodCard";
 import PaymentPlanCard from "./PaymentPlanCard";
 
 import creditCardImg from "../../assets/payment/creditCard.svg";
-import lightningImg from "../../assets/payment/lightning.svg";
+import accountImg from "../../assets/payment/account.svg";
+import virAccountImg from "../../assets/payment/virtualAccount.svg";
+import checkAgree from "../../assets/icon/checkRound_green.svg";
+import checkDeagree from "../../assets/icon/checkRound_gray.svg";
+import { Link } from "react-router-dom";
 
 const Payment = () => {
   const [selectedCredit, setselectedCredit] = useState(true);
@@ -40,6 +46,29 @@ const Payment = () => {
       setselectedVirtual(true);
     }
   };
+
+  const [checked, setChecked] = useState(false);
+  const policyCheckClickHandler = (event: React.MouseEvent<HTMLElement>) => {
+    if (checked === true) {
+      setChecked(false);
+    } else {
+      setChecked(true);
+    }
+  };
+
+  const navigate = useNavigate();
+  const onCancel = () => {
+    navigate(-1);
+  };
+
+  const [allSelected, setAllSelected] = useState(false);
+  useEffect(() => {
+    if ((selectedCredit || selectedAccount || selectedVirtual) && checked) {
+      setAllSelected(true);
+    } else {
+      setAllSelected(false);
+    }
+  }, [checked, selectedCredit, selectedAccount, selectedVirtual]);
 
   return (
     <>
@@ -77,14 +106,14 @@ const Payment = () => {
                 </button>
                 <button onClick={methodClickHandlerAccount}>
                   <PaymentMethodCard
-                    icon={lightningImg}
+                    icon={accountImg}
                     title="계좌이체"
                     selected={selectedAccount}
                   />
                 </button>
                 <button onClick={methodClickHandlerVirtual}>
                   <PaymentMethodCard
-                    icon={lightningImg}
+                    icon={virAccountImg}
                     title="무통장입금"
                     selected={selectedVirtual}
                   />
@@ -92,9 +121,30 @@ const Payment = () => {
               </div>
             </PaymentCard>
             <PaymentCard>
-              <PaymentCardTitle title="정책 동의" />
+              <PaymentCardTitle title="Refund Policy" />
+              <PolicyDiv>
+                <button onClick={policyCheckClickHandler}>
+                  <img src={checked ? checkAgree : checkDeagree} alt="agree" />
+                </button>
+                <span>
+                  By proceeding I agree to &nbsp;
+                  <Link to="/">Virtual Meet’s refund policy</Link>
+                </span>
+              </PolicyDiv>
             </PaymentCard>
           </PaymentArea>
+          <Hr />
+          <BtnDiv
+            bgcolor={allSelected ? "#7FFF6A" : "#31373A"}
+            txtcolor={allSelected ? "#121416" : "#70747B"}
+          >
+            <button className="backBtn" onClick={onCancel}>
+              Back
+            </button>
+            <button className="buyBtn" disabled={!allSelected}>
+              BUY
+            </button>
+          </BtnDiv>
         </Container>
       </Main>
     </>
@@ -142,4 +192,65 @@ const EmailInfo = styled.div`
   }
 `;
 
+const PolicyDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0.9375rem 0;
+
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  span {
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.3125rem;
+    margin-left: 0.9375rem;
+
+    a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+  }
+`;
+
+const Hr = styled.hr`
+  border: 0.0625rem solid #575757;
+  margin: 3.75rem 0;
+  width: 100%;
+`;
+
+const BtnDiv = styled.div<{
+  bgcolor: string;
+  txtcolor: string;
+}>`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 9.6875rem;
+
+  .backBtn {
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 150%;
+    text-align: center;
+
+    color: #9c9c9c;
+  }
+  .buyBtn {
+    padding: 0.625rem;
+    gap: 0.625rem;
+    width: 21.125rem;
+    height: 2.9375rem;
+    margin-left: 2.75rem;
+
+    background: ${(props) => props.bgcolor || "#31373A"};
+    border-radius: 0.625rem;
+
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 150%;
+
+    color: ${(props) => props.txtcolor || "#70747B"};
+  }
+`;
 export default Payment;
