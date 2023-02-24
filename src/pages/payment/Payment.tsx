@@ -16,19 +16,15 @@ import checkDeagree from "../../assets/icon/checkRound_gray.svg";
 import { loadTossPayments } from "@tosspayments/payment-sdk";
 
 const Payment = () => {
-  const clientKey = "test_ck_4Gv6LjeKD8awkyBPDbxVwYxAdXy1";
+  const clientKey = "test_ck_OEP59LybZ8Bdv6A1JxkV6GYo7pRe";
 
+  /* ================== '결제' Btn Event ================== */
   const paymentsHandler = (event: React.MouseEvent<HTMLElement>) => {
+    let requestJson: any = initPaymentsData("공통", method);
+
     loadTossPayments(clientKey).then((tossPayments) => {
       tossPayments
-        .requestPayment(method, {
-          amount: 12900,
-          orderId: "EyOBs4TDDykw7-5ccEi6W", //자동생성필요
-          orderName: "Basic",
-          customerEmail: "123@gmail.com",
-          successUrl: "http://localhost:3000/plan/payment/success",
-          failUrl: "http://localhost:3000/plan/payment/fail",
-        })
+        .requestPayment(method, requestJson)
         .catch(function (error: any) {
           if (error.code === "USER_CANCEL") {
             console.log("결제 고객이 결제창을 닫았을 때 에러 처리");
@@ -39,6 +35,27 @@ const Payment = () => {
     });
   };
 
+  /* ================= 주문번호(OrderID) 자동생성 =================== */
+  const [autoOrderId, setAutoOrderId] = useState("AutoOrderIdTest");
+  const makeOrderId = (prefix: string) => {
+    let x: number = Math.floor(Math.random() * 100000000);
+    setAutoOrderId(prefix + x.toString());
+  };
+  useEffect(() => {
+    makeOrderId(autoOrderId);
+  }, []);
+
+  /* ============= [공통] + [결제수단] JSON DATA 합치기 ================= */
+  const initPaymentsData = (general: any, paymentType: any) => {
+    paymentData[general].amount = "12900";
+    paymentData[general].orderId = autoOrderId;
+    paymentData[general].orderName = "Basic";
+    paymentData[general].customerEmail = "1123@gmail.com";
+
+    return Object.assign(paymentData[general], paymentData[paymentType]);
+  };
+
+  //--------------------------------------------------------------------
   const [method, setMethod] = useState<any>("카드");
   const [selectedCredit, setselectedCredit] = useState(true);
   const [selectedAccount, setselectedAccount] = useState(false);
@@ -285,4 +302,70 @@ const BtnDiv = styled.div<{
     color: ${(props) => props.txtcolor || "#70747B"};
   }
 `;
+
+/* =================================  결제데이터 ================================== */
+let paymentData: any = [
+  "공통",
+  "카드",
+  "가상계좌",
+  "계좌이체",
+  "휴대폰",
+  "토스페이",
+];
+let currentURL =
+  window.location.protocol +
+  "//" +
+  window.location.host +
+  window.location.pathname;
+
+paymentData["공통"] = {
+  amount: "",
+  orderId: "",
+  orderName: "",
+  customerName: null,
+  customerEmail: null,
+  customerMobilePhone: null,
+  successUrl: currentURL + "/success",
+  failUrl: currentURL + "/fail",
+  windowTarget: "iframe",
+  taxFreeAmount: null,
+  cultureExpense: false,
+};
+
+paymentData["카드"] = {
+  cardCompany: null,
+  cardInstallmentPlan: null,
+  maxCardInstallmentPlan: null,
+  freeInstallmentPlans: null,
+  useCardPoint: false,
+  useAppCardOnly: false,
+  useInternationalCardOnly: false,
+  flowMode: "DEFAULT",
+  easyPay: null,
+  discountCode: null,
+  appScheme: null,
+};
+
+paymentData["가상계좌"] = {
+  validHours: 72,
+  cashReceipt: {
+    type: "소득공제",
+  },
+  useEscrow: false,
+  escrowProducts: null,
+  currency: "KRW",
+};
+
+paymentData["계좌이체"] = {
+  cashReceipt: {
+    type: "소득공제",
+  },
+  useEscrow: false,
+  escrowProducts: null,
+};
+
+paymentData["휴대폰"] = {
+  mobileCarrier: null, // [NOTE] 테스트 환경에서 동작 X
+};
+
 export default Payment;

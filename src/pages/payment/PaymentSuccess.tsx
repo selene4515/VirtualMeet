@@ -5,7 +5,7 @@ const PaymentSuccess = () => {
   return (
     <>
       <Main>
-        <Container>결제승인요청중입니다</Container>
+        <Container>결제완료!</Container>
       </Main>
     </>
   );

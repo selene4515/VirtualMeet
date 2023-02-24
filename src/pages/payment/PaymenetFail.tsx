@@ -5,7 +5,7 @@ const PaymentFail = () => {
   return (
     <>
       <Main>
-        <Container></Container>
+        <Container>결제실패</Container>
       </Main>
     </>
   );
