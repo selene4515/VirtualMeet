@@ -18,8 +18,19 @@ const Footer = () => {
               010-6602-1795 | 메일 : fluentt88@fluentt.ai
             </p>
             <p>
-              <Link to="/">Terms of Service</Link> |
-              <Link to="/"> Privacy Policy</Link>
+              <Link
+                to="https://www.notion.so/cf8b622e5b5843159e6f945b9dcc6207"
+                target="_blank"
+              >
+                Terms of Service
+              </Link>
+              &nbsp;|&nbsp;
+              <Link
+                to="https://www.notion.so/fe99d3eb995f4e71b0671ef675fcc44e"
+                target="_blank"
+              >
+                Privacy Policy
+              </Link>
             </p>
           </TextArea>
           <SNSIcon>
