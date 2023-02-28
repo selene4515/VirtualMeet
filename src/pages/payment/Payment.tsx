@@ -36,7 +36,6 @@ const Payment = () => {
           }
         });
     });
-    console.log(autoOrderId);
   };
 
   /* ================= 주문번호(OrderID) 자동생성 =================== */

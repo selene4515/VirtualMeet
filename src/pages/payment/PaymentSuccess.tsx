@@ -14,9 +14,9 @@ const PaymentSuccess = () => {
   const amount: number = params.amount;
   const orderId: string = params.orderId;
 
-  // useEffect(() => {
-  //   PaymentAPI.payrequest({ paymentKey, amount, orderId });
-  // }, [paymentKey, amount, orderId]);
+  useEffect(() => {
+    PaymentAPI.payrequest({ paymentKey, amount, orderId });
+  }, []);
 
   return (
     <>
