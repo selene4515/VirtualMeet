@@ -12,12 +12,14 @@ const Footer = () => {
             alt="fluentt"
           />
           <TextArea>
-            <p>사업자 등록번호 : 5168802097 | 대표자 : 전예찬 (Jeon ye chan)</p>
-            <p>
+            <div>
+              사업자 등록번호 : 5168802097 | 대표자 : 전예찬 (Jeon ye chan)
+            </div>
+            <div>
               서울특별시 강남구 역삼로 217 합동빌딩, 6층 | 전화번호 :
               010-6602-1795 | 메일 : fluentt88@fluentt.ai
-            </p>
-            <p>
+            </div>
+            <div>
               <Link
                 to="https://www.notion.so/cf8b622e5b5843159e6f945b9dcc6207"
                 target="_blank"
@@ -31,7 +33,7 @@ const Footer = () => {
               >
                 Privacy Policy
               </Link>
-            </p>
+            </div>
           </TextArea>
           <SNSIcon>
             <img
@@ -66,9 +68,9 @@ const Container = styled.div`
   padding-left: 1.875rem;
 `;
 
-const TextArea = styled.p`
+const TextArea = styled.div`
   margin: 1.5rem 0;
-  p {
+  div {
     font-weight: 400;
     font-size: 1rem;
     line-height: 150%;
@@ -86,7 +88,7 @@ const SNSIcon = styled.div`
     margin-right: 1.25rem;
   }
 `;
-const Copyright = styled.p`
+const Copyright = styled.div`
   margin-top: 1.5rem;
   font-weight: 700;
   font-size: 1.25rem;
