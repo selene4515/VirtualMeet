@@ -1,4 +1,4 @@
-import styled from "styled-components";
+//import styled from "styled-components";
 import { Container, Main } from "../home/Home";
 
 const PaymentFail = () => {

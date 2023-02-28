@@ -7,6 +7,8 @@ import PaymentCardTitle from "./PaymentCardTitle";
 import PaymentMethodCard from "./PaymentMethodCard";
 import PaymentPlanCard from "./PaymentPlanCard";
 
+import { Hr } from "../../components/Hr";
+
 import creditCardImg from "../../assets/payment/creditCard.svg";
 import accountImg from "../../assets/payment/account.svg";
 import virAccountImg from "../../assets/payment/virtualAccount.svg";
@@ -16,7 +18,8 @@ import checkDeagree from "../../assets/icon/checkRound_gray.svg";
 import { loadTossPayments } from "@tosspayments/payment-sdk";
 
 const Payment = () => {
-  const clientKey = "test_ck_OEP59LybZ8Bdv6A1JxkV6GYo7pRe";
+  const clientKey: string = "test_ck_4Gv6LjeKD8awkyBPDbxVwYxAdXy1"; //fluentt
+  //const clientKey: string = "test_ck_LBa5PzR0ArnAdGplwxXVvmYnNeDM"; //test
 
   /* ================== '결제' Btn Event ================== */
   const paymentsHandler = (event: React.MouseEvent<HTMLElement>) => {
@@ -33,12 +36,13 @@ const Payment = () => {
           }
         });
     });
+    console.log(autoOrderId);
   };
 
   /* ================= 주문번호(OrderID) 자동생성 =================== */
-  const [autoOrderId, setAutoOrderId] = useState("AutoOrderIdTest");
+  const [autoOrderId, setAutoOrderId] = useState("OrderIdAuto");
   const makeOrderId = (prefix: string) => {
-    let x: number = Math.floor(Math.random() * 100000000);
+    let x: number = Math.floor(Math.random() * 10000000000);
     setAutoOrderId(prefix + x.toString());
   };
   useEffect(() => {
@@ -263,12 +267,6 @@ const PolicyDiv = styled.div`
   }
 `;
 
-const Hr = styled.hr`
-  border: 0.0625rem solid #575757;
-  margin: 3.75rem 0;
-  width: 100%;
-`;
-
 const BtnDiv = styled.div<{
   bgcolor: string;
   txtcolor: string;
@@ -312,11 +310,14 @@ let paymentData: any = [
   "휴대폰",
   "토스페이",
 ];
+// let currentURL =
+//   window.location.protocol +
+//   "//" +
+//   window.location.host +
+//   window.location.pathname;
+
 let currentURL =
-  window.location.protocol +
-  "//" +
-  window.location.host +
-  window.location.pathname;
+  window.location.protocol + "//" + window.location.host + "/plan/payment";
 
 paymentData["공통"] = {
   amount: "",
