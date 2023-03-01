@@ -1,4 +1,5 @@
 //import { api } from "./configs/axiosConfig";
+import { defineCancelApiObject } from "./configs/axiosUtils";
 import { tossapi } from "./configs/tossConfig";
 
 type PayData = {
@@ -8,7 +9,10 @@ type PayData = {
 };
 
 export const PaymentAPI = {
-  payrequest: async ({ paymentKey, amount, orderId }: PayData) => {
+  payrequest: async (
+    { paymentKey, amount, orderId }: PayData,
+    cancel = false
+  ) => {
     let reqData = {
       paymentKey: paymentKey,
       amount: amount,
@@ -19,6 +23,11 @@ export const PaymentAPI = {
       .request({
         method: "POST",
         data: reqData,
+        signal: cancel
+          ? cancelApiObject[
+              PaymentAPI.payrequest.name
+            ].handleRequestCancellation().signal
+          : undefined,
       })
       .then((response: any) => {
         console.log(response.data);
@@ -42,3 +51,5 @@ export const PaymentAPI = {
       });
   },
 };
+
+const cancelApiObject = defineCancelApiObject(PaymentAPI);
