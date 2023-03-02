@@ -84,6 +84,9 @@ const TextArea = styled.div`
 const SNSIcon = styled.div`
   display: flex;
   flex-direction: row;
+
+  margin: 0.75rem 0;
+
   img {
     margin-right: 1.25rem;
   }
