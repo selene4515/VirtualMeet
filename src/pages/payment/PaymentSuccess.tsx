@@ -44,7 +44,7 @@ const PaymentSuccess = () => {
           </div>
           <Hr />
           <BtnDiv>
-            <BtnBgGrayFontColor>결제 내역 확인</BtnBgGrayFontColor>
+            <BtnBgGrayFontColor>Check Payment History</BtnBgGrayFontColor>
             <BtnBgGrayFontColor color="#74E561">
               Download Virtual Meet
             </BtnBgGrayFontColor>

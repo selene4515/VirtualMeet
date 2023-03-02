@@ -148,21 +148,21 @@ const Payment = () => {
                 <button onClick={methodClickHandlerCredit}>
                   <PaymentMethodCard
                     icon={creditCardImg}
-                    title="신용/체크카드"
+                    title="Credit card"
                     selected={selectedCredit}
                   />
                 </button>
                 <button onClick={methodClickHandlerAccount}>
                   <PaymentMethodCard
                     icon={accountImg}
-                    title="계좌이체"
+                    title="Account transfer"
                     selected={selectedAccount}
                   />
                 </button>
                 <button onClick={methodClickHandlerVirtual}>
                   <PaymentMethodCard
                     icon={virAccountImg}
-                    title="무통장입금"
+                    title="Virtual account"
                     selected={selectedVirtual}
                   />
                 </button>
