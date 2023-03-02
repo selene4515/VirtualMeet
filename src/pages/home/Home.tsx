@@ -14,7 +14,9 @@ const Home = () => {
       </Main>
       <Main color="#1D2022">
         <Container>
-          <HomeSecond />
+          <div>
+            <HomeSecond />
+          </div>
         </Container>
       </Main>
       <Main color="#7FFF6A">
