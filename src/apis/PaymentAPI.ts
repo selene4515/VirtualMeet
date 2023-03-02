@@ -30,7 +30,9 @@ export const PaymentAPI = {
           : undefined,
       })
       .then((response: any) => {
-        console.log(response.data);
+        console.log(response.data); //추후에 숨김 필요
+
+        //----------서버에 데이터 전송 작업 필요------------
         // const amountRP = response.data.balanceAmount;
         // const approvedAtRP = response.data.approvedAt;
         // const orderIdRP = response.data.orderId;
