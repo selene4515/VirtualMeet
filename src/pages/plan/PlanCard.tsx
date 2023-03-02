@@ -55,6 +55,9 @@ const PalnCardComponent = styled.div`
 
   background: #171a1c;
   border-radius: 0.625rem;
+
+  margin-top: 1.875rem;
+  margin-bottom: 5rem;
 `;
 const TopColor = styled.div<{ color: string }>`
   position: absolute;

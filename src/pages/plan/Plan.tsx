@@ -34,11 +34,11 @@ const TitleTxt = styled.div`
   font-weight: 700;
   font-size: 40px;
   line-height: 50px;
-  margin-top: 2.75rem;
+  margin-top: 4.375rem;
 `;
 const SubTitleTxt = styled.div`
   font-weight: 600;
-  font-size: 0.5625rem;
+  font-size: 0.9rem;
   line-height: 140%;
 
   margin-top: 1rem;

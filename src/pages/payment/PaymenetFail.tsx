@@ -38,6 +38,9 @@ const PaymentFail = () => {
 const BtnDiv = styled.div`
   display: flex;
   flex-direction: row;
+
+  margin-top: 1.25rem;
+  margin-bottom: 5rem;
 `;
 
 export default PaymentFail;

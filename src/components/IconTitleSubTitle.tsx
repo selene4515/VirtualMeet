@@ -37,6 +37,9 @@ const DivContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  margin-top: 3.125rem;
+  margin-bottom: 2rem;
 `;
 
 const IconImg = styled.img`
