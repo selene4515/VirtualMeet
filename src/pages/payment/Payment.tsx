@@ -95,12 +95,20 @@ const Payment = () => {
     }
   };
 
-  const [checked, setChecked] = useState(false);
-  const policyCheckClickHandler = (event: React.MouseEvent<HTMLElement>) => {
-    if (checked === true) {
-      setChecked(false);
+  const [checked1, setChecked1] = useState(false);
+  const [checked2, setChecked2] = useState(false);
+  const policyCheckClickHandler1 = (event: React.MouseEvent<HTMLElement>) => {
+    if (checked1 === true) {
+      setChecked1(false);
     } else {
-      setChecked(true);
+      setChecked1(true);
+    }
+  };
+  const policyCheckClickHandler2 = (event: React.MouseEvent<HTMLElement>) => {
+    if (checked2 === true) {
+      setChecked2(false);
+    } else {
+      setChecked2(true);
     }
   };
 
@@ -111,12 +119,16 @@ const Payment = () => {
 
   const [allSelected, setAllSelected] = useState(false);
   useEffect(() => {
-    if ((selectedCredit || selectedAccount || selectedVirtual) && checked) {
+    if (
+      (selectedCredit || selectedAccount || selectedVirtual) &&
+      checked1 &&
+      checked2
+    ) {
       setAllSelected(true);
     } else {
       setAllSelected(false);
     }
-  }, [checked, selectedCredit, selectedAccount, selectedVirtual]);
+  }, [checked1, checked2, selectedCredit, selectedAccount, selectedVirtual]);
 
   return (
     <>
@@ -169,14 +181,33 @@ const Payment = () => {
               </div>
             </PaymentCard>
             <PaymentCard>
-              <PaymentCardTitle title="Refund Policy" />
+              <PaymentCardTitle title="Policy Agreement" />
               <PolicyDiv>
-                <button onClick={policyCheckClickHandler}>
-                  <img src={checked ? checkAgree : checkDeagree} alt="agree" />
+                <button onClick={policyCheckClickHandler1}>
+                  <img src={checked1 ? checkAgree : checkDeagree} alt="agree" />
                 </button>
                 <span>
                   By proceeding I agree to &nbsp;
-                  <Link to="/">Virtual Meet’s refund policy</Link>
+                  <Link
+                    to="https://www.notion.so/cf8b622e5b5843159e6f945b9dcc6207"
+                    target="_blank"
+                  >
+                    Terms of Service.
+                  </Link>
+                </span>
+              </PolicyDiv>
+              <PolicyDiv>
+                <button onClick={policyCheckClickHandler2}>
+                  <img src={checked2 ? checkAgree : checkDeagree} alt="agree" />
+                </button>
+                <span>
+                  By proceeding I agree to &nbsp;
+                  <Link
+                    to="https://www.notion.so/fe99d3eb995f4e71b0671ef675fcc44e"
+                    target="_blank"
+                  >
+                    Privacy Policy.
+                  </Link>
                 </span>
               </PolicyDiv>
             </PaymentCard>
