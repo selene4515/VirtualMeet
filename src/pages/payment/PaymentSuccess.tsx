@@ -26,12 +26,6 @@ const PaymentSuccess = () => {
     <>
       <Main>
         <Container>
-          {paymentKey}
-          <br />
-          {amount}
-          <br />
-          {orderId}
-          <br />
           <IconTitleSubTitle
             imgName={CheckIcon}
             title1="Payment has been made"
