@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import HomeTopBg from "./HomeTopBg";
 import { HomeSecond } from "./HomeSecond";
+import { HomeThird } from "./HomeThird";
 
 const Home = () => {
   return (
@@ -17,7 +18,9 @@ const Home = () => {
         </Container>
       </Main>
       <Main color="#7FFF6A">
-        <Container>3</Container>
+        <Container>
+          <HomeThird />
+        </Container>
       </Main>
       <Main>
         <Container>4</Container>
