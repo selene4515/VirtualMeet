@@ -3,6 +3,7 @@ import styled from "styled-components";
 import HomeTopBg from "./HomeTopBg";
 import { HomeSecond } from "./HomeSecond";
 import { HomeThird } from "./HomeThird";
+import { HomeFourth } from "./HomeFourth";
 
 const Home = () => {
   return (
@@ -25,7 +26,9 @@ const Home = () => {
         </Container>
       </Main>
       <Main>
-        <Container>4</Container>
+        <Container>
+          <HomeFourth />
+        </Container>
       </Main>
     </>
   );
