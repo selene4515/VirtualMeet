@@ -96,6 +96,8 @@ const Copyright = styled.div`
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 150%;
+
+  color: #31373a;
 `;
 
 export default Footer;
