@@ -9,6 +9,7 @@ import { BtnBgGrayFontColor } from "../../components/button/BtnBgGrayFontColor";
 import { IconTitleSubTitle } from "../../components/IconTitleSubTitle";
 
 import CheckIcon from "../../assets/icon/notiCheck_green.svg";
+import { Link } from "react-router-dom";
 
 const PaymentSuccess = () => {
   const searchParams: string = window.location.search;
@@ -45,9 +46,11 @@ const PaymentSuccess = () => {
           <Hr />
           <BtnDiv>
             <BtnBgGrayFontColor>Check Payment History</BtnBgGrayFontColor>
-            <BtnBgGrayFontColor color="#74E561">
-              Download Virtual Meet
-            </BtnBgGrayFontColor>
+            <Link to="/download">
+              <BtnBgGrayFontColor color="#74E561">
+                Download Virtual Meet
+              </BtnBgGrayFontColor>
+            </Link>
           </BtnDiv>
         </Container>
       </Main>
