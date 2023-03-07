@@ -7,7 +7,8 @@ import Plan from "./pages/plan/Plan";
 import Payment from "./pages/payment/Payment";
 import PaymentSuccess from "./pages/payment/PaymentSuccess";
 import PaymentFail from "./pages/payment/PaymenetFail";
-import { Download } from "./pages/downloads/Download";
+import Download from "./pages/downloads/Download";
+import Login from "./pages/user/login/Login";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
-          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
 
           <Route path="/plan" element={<Plan />} />
           <Route path="/plan/payment" element={<Payment />} />

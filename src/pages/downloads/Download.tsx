@@ -11,7 +11,7 @@ import windowIcon from "../../assets/download/windows11Logo.svg";
 import macIcon from "../../assets/download/macLogo.svg";
 import { Link } from "react-router-dom";
 
-export const Download = () => {
+const Download = () => {
   const userOsType: string = getUAInfo().downloadType;
 
   return (
@@ -99,3 +99,5 @@ const BtnDiv = styled.div`
     flex-direction: row;
   }
 `;
+
+export default Download;
