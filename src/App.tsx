@@ -23,10 +23,8 @@ function App() {
           <Route path="/plan/payment" element={<Payment />} />
           <Route path="/plan/payment/success" element={<PaymentSuccess />} />
           <Route path="/plan/payment/fail" element={<PaymentFail />} />
+
           <Route path="/download" element={<Download />} />
-          {/* <Route path="/:planId/success" element={<PaymentSuccess />} /> */}
-          {/* <Route path="/:planId/fail" element={<PaymentFail />} /> */}
-          {/* <Route path="/:planId/download" element={<Download />} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>

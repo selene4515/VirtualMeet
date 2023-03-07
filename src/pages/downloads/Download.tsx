@@ -1,10 +1,19 @@
 import styled from "styled-components";
+import {
+  fetchFunctionality as _fetch,
+  getUAInfo,
+} from "../../apis/DownloadAPI";
+
 import { Container, Main } from "../home/Home";
 import { DwlBtn } from "./DownloadBtn";
 
 import windowIcon from "../../assets/download/windows11Logo.svg";
+import macIcon from "../../assets/download/macLogo.svg";
+import { Link } from "react-router-dom";
 
 export const Download = () => {
+  const userOsType: string = getUAInfo().downloadType;
+
   return (
     <>
       <Main color="#1D2022">
@@ -24,15 +33,22 @@ export const Download = () => {
           <BtnDiv>
             <span>PC version</span>
             <div>
-              <DwlBtn icon={windowIcon} text="Download Windows" />
-              <DwlBtn icon={windowIcon} text="Download macOS" />
+              <DwlBtn
+                onclickpromise={_fetch}
+                icon={userOsType === "mac" ? macIcon : windowIcon}
+                text={userOsType}
+              />
             </div>
           </BtnDiv>
           <BtnDiv>
             <span>Mobile version</span>
             <div>
-              <DwlBtn icon={windowIcon} text="Download Android" />
-              <DwlBtn icon={windowIcon} text="Download iOS" />
+              <Link to="">
+                <DwlBtn icon={windowIcon} text="Android" />
+              </Link>
+              <Link to="">
+                <DwlBtn icon={macIcon} text="iOS" />
+              </Link>
             </div>
           </BtnDiv>
         </Container>

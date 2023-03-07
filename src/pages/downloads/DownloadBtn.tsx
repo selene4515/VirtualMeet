@@ -1,17 +1,37 @@
+import { useCallback, useState } from "react";
 import styled from "styled-components";
 
 type PropsData = {
   icon: string;
   text: string;
+  onclickpromise?: () => Promise<void | Response> | undefined;
 };
 
-export const DwlBtn = ({ icon, text }: PropsData) => {
+export const DwlBtn = ({ onclickpromise, icon, text }: PropsData) => {
+  const [isSending, setIsSending] = useState(false);
+
+  const asynButtonClick = useCallback(async () => {
+    if (isSending) return;
+    if (!onclickpromise) return;
+    setIsSending(true);
+
+    try {
+      const response = await onclickpromise();
+      if (response) {
+        setIsSending(false);
+      }
+    } catch {
+      console.warn("Check the api call on this button.");
+      setIsSending(false);
+    }
+  }, [isSending, setIsSending, onclickpromise]);
+
   return (
     <>
-      <Btn>
+      <Btn onClick={asynButtonClick}>
         <div>
-          <img src={icon} alt="icon" />
-          {text}
+          <img src={icon} alt={text} />
+          Download {text}
         </div>
       </Btn>
     </>
