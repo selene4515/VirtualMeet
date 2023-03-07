@@ -21,7 +21,7 @@ const Navigation = () => {
           </NavCenterLan>
         </NavCenter>
         <NavRight>
-          <Link to="/">
+          <Link to="/login">
             <NavRightLogin>LOGIN</NavRightLogin>
           </Link>
           <Link to="/">
