@@ -13,7 +13,8 @@ const Footer = () => {
           />
           <TextArea>
             <div>
-              사업자 등록번호 : 5168802097 | 대표자 : 전예찬 (Jeon ye chan)
+              상호명 : 주식회사 플루언트 | 사업자 등록번호 : 5168802097 | 대표자
+              : 전예찬 (Jeon ye chan)
             </div>
             <div>
               서울특별시 강남구 역삼로 217 합동빌딩, 6층 | 전화번호 :
@@ -21,14 +22,14 @@ const Footer = () => {
             </div>
             <div>
               <Link
-                to="https://www.notion.so/cf8b622e5b5843159e6f945b9dcc6207"
+                to="https://icy-buffer-54b.notion.site/cf8b622e5b5843159e6f945b9dcc6207"
                 target="_blank"
               >
                 Terms of Service
               </Link>
               &nbsp;|&nbsp;
               <Link
-                to="https://www.notion.so/fe99d3eb995f4e71b0671ef675fcc44e"
+                to="https://icy-buffer-54b.notion.site/fe99d3eb995f4e71b0671ef675fcc44e"
                 target="_blank"
               >
                 Privacy Policy
