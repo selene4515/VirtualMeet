@@ -13,7 +13,7 @@ type Usertype = {
 };
 
 const Login = () => {
-  let sessionStorage = window.localStorage;
+  let localStorage: Storage = window.localStorage;
 
   const User: Usertype = { email: "fluentt@gmail.com", pw: "vm1234!!" }; //임시계정
   const [email, setEmail] = useState<string>("");
@@ -69,10 +69,11 @@ const Login = () => {
   const navigate = useNavigate();
   const AllContinueBtnHandler = () => {
     if (email === User.email && pw === User.pw) {
-      sessionStorage.setItem("email", email);
-      sessionStorage.setItem("pw", pw);
+      localStorage.setItem("email", email);
+      localStorage.setItem("pw", pw);
       alert("로그인에 성공했습니다.");
       navigate("/");
+      //window.location.reload();
     } else {
       alert("비밀번호가 틀렸습니다.");
     }

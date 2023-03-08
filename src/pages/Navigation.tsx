@@ -1,8 +1,26 @@
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { media } from "../styles/media";
 
 const Navigation = () => {
+  let localStorage: Storage = window.localStorage;
+  const navigate = useNavigate();
+
+  const [savedEmail, setSavedEmail] = useState<string>("");
+
+  const LogoutHandler = () => {
+    if (window.confirm("로그아웃 하시겠습니까?")) {
+      const removeEmail: any = localStorage.removeItem("email");
+      setSavedEmail(removeEmail);
+      navigate("/");
+    }
+  };
+  const getEmail: string = localStorage.getItem("email") || "";
+  useEffect(() => {
+    getEmail && setSavedEmail(getEmail);
+  }, [getEmail]);
+
   return (
     <Navi>
       <Nav>
@@ -20,14 +38,20 @@ const Navigation = () => {
             <NavCenterLanBold>ENG</NavCenterLanBold>
           </NavCenterLan>
         </NavCenter>
-        <NavRight>
-          <Link to="/login">
-            <NavRightLogin>LOGIN</NavRightLogin>
-          </Link>
-          <Link to="/">
-            <NavRightSignup>SIGN UP</NavRightSignup>
-          </Link>
-        </NavRight>
+        {savedEmail ? (
+          <NavRight>
+            <NavRightLogin onClick={LogoutHandler}>LOGOUT</NavRightLogin>
+          </NavRight>
+        ) : (
+          <NavRight>
+            <Link to="/login">
+              <NavRightLogin>LOGIN</NavRightLogin>
+            </Link>
+            <Link to="/">
+              <NavRightSignup>SIGN UP</NavRightSignup>
+            </Link>
+          </NavRight>
+        )}
       </Nav>
     </Navi>
   );
@@ -82,9 +106,8 @@ const NavRight = styled.div`
   padding: 0 1.25rem;
 `;
 
-const NavRightLogin = styled.div`
+const NavRightLogin = styled.button`
   margin: 0 0.3125rem;
-  color: #ffffff;
   font-size: 0.9375rem;
   display: flex;
   justify-content: center;
@@ -96,7 +119,6 @@ const NavRightLogin = styled.div`
 `;
 const NavRightSignup = styled.button`
   margin: 0 0.3125rem;
-  color: #ffffff;
   font-size: 0.9375rem;
   display: flex;
   justify-content: center;
@@ -107,7 +129,5 @@ const NavRightSignup = styled.button`
   height: 2.125rem;
   background: linear-gradient(90deg, #215468 0%, #4ac8ff 100%), #ffffff;
 `;
-
-// const NavRightLogout = styled.div``;
 
 export default Navigation;
