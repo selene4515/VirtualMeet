@@ -9,6 +9,10 @@ const HomeTopBg = () => {
       <Link to="/plan">
         <StartedBtn>Get Started!</StartedBtn>
       </Link>
+      {/* 로그인없이 다운로드 가능 
+      <Link to="/download">
+        <StartedBtn>Go Download!</StartedBtn>
+      </Link> */}
       <MainImg
         src={require("../../assets/home/T_mainImgxl.svg").default}
         alt="mainImg"
