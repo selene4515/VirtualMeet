@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import PlanTextLine from "./PlanTextLine";
 
@@ -23,6 +23,19 @@ const PlanCard = ({
   text2,
   text3,
 }: CardPropsType) => {
+  let localStorage: Storage = window.localStorage;
+  const navigate = useNavigate();
+
+  const getEmail: string = localStorage.getItem("email") || "";
+  const LoginCheckHandler = () => {
+    if (getEmail) {
+      navigate("/plan/payment");
+    } else {
+      alert("로그인이 필요합니다!");
+      navigate("/login");
+    }
+  };
+
   return (
     <PalnCardComponent>
       <TopColor color={color} />
@@ -41,9 +54,9 @@ const PlanCard = ({
         </PlanExplainComponentDiv>
       </PlanExplainComponent>
       <PlanBuyComponent>
-        <Link to="/plan/payment">
-          <PlanBuyBtn color={color}>Buy Now</PlanBuyBtn>
-        </Link>
+        <PlanBuyBtn color={color} onClick={LoginCheckHandler}>
+          Buy Now
+        </PlanBuyBtn>
       </PlanBuyComponent>
     </PalnCardComponent>
   );

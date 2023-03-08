@@ -18,8 +18,14 @@ import checkDeagree from "../../assets/icon/checkRound_gray.svg";
 import { loadTossPayments } from "@tosspayments/payment-sdk";
 
 const Payment = () => {
-  const clientKey: string = "test_ck_4Gv6LjeKD8awkyBPDbxVwYxAdXy1"; //fluentt
-  //const clientKey: string = "test_ck_LBa5PzR0ArnAdGplwxXVvmYnNeDM"; //test
+  const clientKey: string = "test_ck_4Gv6LjeKD8awkyBPDbxVwYxAdXy1"; //fluentt_test
+
+  let localStorage: Storage = window.localStorage;
+  const [savedEmail, setSavedEmail] = useState<string>("");
+  const getEmail: string = localStorage.getItem("email") || "";
+  useEffect(() => {
+    getEmail && setSavedEmail(getEmail);
+  }, [getEmail]);
 
   /* ================== '결제' Btn Event ================== */
   const paymentsHandler = (event: React.MouseEvent<HTMLElement>) => {
@@ -53,7 +59,7 @@ const Payment = () => {
     paymentData[general].amount = "12900";
     paymentData[general].orderId = autoOrderId;
     paymentData[general].orderName = "Basic";
-    paymentData[general].customerEmail = "1123@gmail.com";
+    paymentData[general].customerEmail = savedEmail;
 
     return Object.assign(paymentData[general], paymentData[paymentType]);
   };
@@ -151,7 +157,8 @@ const Payment = () => {
                 text="This is the contact or department who receives the invoices or any billing communications"
               />
               <EmailInfo>
-                <span>Email</span>fff123@gmail.com
+                <span>Email</span>
+                {savedEmail ? savedEmail : "로그인이필요합니다"}
               </EmailInfo>
             </PaymentCard>
             <PaymentCard>
