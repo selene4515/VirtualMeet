@@ -37,18 +37,24 @@ const Footer = () => {
             </div>
           </TextArea>
           <SNSIcon>
-            <img
-              src={require("../assets/footer/snsInsta.svg").default}
-              alt="instagram"
-            />
-            <img
-              src={require("../assets/footer/snsLinkedin.svg").default}
-              alt="linkedin"
-            />
-            <img
-              src={require("../assets/footer/snsYoutube.svg").default}
-              alt="youtube"
-            />
+            <Link to="https://www.instagram.com/fluentt_ai/" target="_blank">
+              <img
+                src={require("../assets/footer/snsInsta.svg").default}
+                alt="instagram"
+              />
+            </Link>
+            <Link to="">
+              <img
+                src={require("../assets/footer/snsLinkedin.svg").default}
+                alt="linkedin"
+              />
+            </Link>
+            <Link to="">
+              <img
+                src={require("../assets/footer/snsYoutube.svg").default}
+                alt="youtube"
+              />
+            </Link>
           </SNSIcon>
           <Copyright>Copyright 2023 FluentT Inc.</Copyright>
         </Container>
