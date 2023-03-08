@@ -8,7 +8,7 @@ import Payment from "./pages/payment/Payment";
 import PaymentSuccess from "./pages/payment/PaymentSuccess";
 import PaymentFail from "./pages/payment/PaymenetFail";
 import Download from "./pages/downloads/Download";
-import Login from "./pages/user/login/Login";
+import Login from "./pages/user/Login";
 
 function App() {
   return (
